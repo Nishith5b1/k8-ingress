@@ -51,3 +51,8 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller
 Verify: kubectl -n kube-system get deploy aws-load-balancer-controller → 2/2 Ready.
+ 
+# New 443 certificate has been created -> ACM -> New -> public -> *.adrith.shop -> create r53 records 
+ 
+Once the certificate is created add the annotations as mentioned in the manifest, add the certificate ARN in the ingress service
+and also add the r53 record for the new created ALB -> *.adrith.shop pointing to ALB
